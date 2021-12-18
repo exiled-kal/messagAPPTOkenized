@@ -2,10 +2,7 @@ import Head from "next/head";
 import Login from "../components/Login";
 
 export default function Home() {
-  const isAuthenticated = false;
-
-  if (!isAuthenticated) return <Login />;
-
+  const user = 
   return (
     <div className="h-screen">
       <Head>
@@ -13,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Welcome to the App</h1>
+      <Login />
     </div>
   );
 }
