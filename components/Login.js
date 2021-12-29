@@ -1,8 +1,14 @@
 import Image from "next/image";
 import token from "../images/token.png";
 import crypto from "../images/Crypto.png";
+import { useMoralis } from "react-moralis";
 
 function Login() {
+  const { authenticate, isInitializing } = useMoralis();
+
+  // if (isInitializing) return "Loading....";
+
+
   return (
     <div className="bg-black relative ">
       <h1>I am the login screen</h1>
@@ -14,8 +20,11 @@ function Login() {
           height={200}
           weight={200}
         />
-        <button className="bg-yellow-300 rounded-lg p-5 font-bold animate-pulse">
-          Login to METAVerse
+        <button
+          onClick={authenticate}
+          className="bg-yellow-300 rounded-lg p-5 font-bold animate-pulse"
+        >
+          Login to META Verse
         </button>
       </div>
       <div className="w-ful h-screen">
