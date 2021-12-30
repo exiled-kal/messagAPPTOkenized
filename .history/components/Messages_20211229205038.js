@@ -1,26 +1,15 @@
 import { useRef } from "react";
 import { ByMoralis, useMoralis, useMoralisQuery } from "react-moralis";
-import Message from "./Message";
 import SendMessage from "./SendMessage";
 
-const MINS_DURATION = 30;
+
+const MI
 
 function Messages() {
   const { user } = useMoralis();
   const endOfMessageRef = useRef(null);
-  const { data, loading, error } = useMoralisQuery(
-    "Messages",
-    (query) =>
-      query
-        .ascending("createdAt")
-        .greaterThan(
-          "createdAt",
-          new Date(Date.now() - 1000 * 60 * MINS_DURATION)
-        ),
-    [],
-    {
-      live: true,
-    }
+  const { data, loading, error } = useMoralisQuery("Messages", (query) =>
+    query.ascending("createdAt")
   );
 
   return (
@@ -34,11 +23,7 @@ function Messages() {
           }}
         />
       </div>
-      <div>
-        {data.map((message) => (
-          <Message key={message.id} message={message} />
-        ))}
-      </div>
+      <div></div>
       <div className="flex justify-center">
         <SendMessage endOfMessageRef={endOfMessageRef} />
       </div>
